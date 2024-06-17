@@ -1,0 +1,114 @@
+/* Hoja de estilos */
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+#menu {
+    display: block;
+}
+
+.contenedor {
+    text-align: justify;
+    vertical-align: top;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    /* position: fixed; */
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+
+#libros {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#libros td,
+#libros th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#libros tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#libros tr:hover {
+    background-color: #ddd;
+}
+
+#libros th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+#imagen {
+    padding: 10px;
+    border-radius: 12px;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+iframe {
+    width: 30%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    float: left;
+    border: 0px;
+}
+
+audio {
+    width: 30%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: inline;
+}
+
+#audio {
+    position: relative;
+}
+
+.etiqueta {
+    font-weight: bold;
+    color: darkblue;
+}
+
+#resumen {
+    display: block;
+}
