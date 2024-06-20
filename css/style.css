@@ -109,6 +109,11 @@ audio {
     color: darkblue;
 }
 
+.error {
+    color:red;
+    display: inline;
+}
+
 #resumen {
     display: block;
 }
