@@ -109,8 +109,26 @@ audio {
     color: darkblue;
 }
 
+.msg {
+    color: brown;
+    margin: 20px 0px 10px 0px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.info {
+    margin: 2px 0;
+}
+
+.respuesta {
+    color: rgb(12, 125, 4);
+    margin: 10px 10px 10px 10px;
+    font-weight: bold;
+}
+
+
 .error {
-    color:red;
+    color: red;
     display: inline;
 }
 

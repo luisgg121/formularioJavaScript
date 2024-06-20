@@ -23,7 +23,7 @@
             <h2>Alta de libros:</h2>
             <form method="post" class="container" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="autor" class="etiqueta">Nombre completo del autor:</label><br>
-                <input type="text" id="autor" name="autor" maxlength="50" size="50" value="<?php echo htmlspecialchars($autor); ?>">
+                <input type="text" id="autor" name="autor" maxlength="50" size="50" value="<?php echo htmlspecialchars(""); ?>">
                 <div class="error"><?php echo $autorErr; ?></div><br><br>
                 <label for="email" class="etiqueta">Email</label><br>
                 <input type="email" name="email" size="50">
@@ -50,14 +50,14 @@
 
     <div class="contenedor">
         <?php
-        // Checking if submit button is pressed or not
+        // Checamos si el boton submit ha sido presionado
         if (isset($_POST['enviar'])) {
-            // Checking if there is any error or not
+            // Checamos si hay o no errores:
             if (
                 $autorErr == "" && $emailErr == "" && $telefonoErr == "" && $libroErr == "" && $fechaErr == "" && $resumenErr == "" && $urlErr == ""
             ) {
-                echo "<p class='msg'>You have been sucessfully registered👍</p>";
-                echo "<h3>Your Details are :</h3>";
+                echo "<p class='msg'>Los datos se han validado exitosamente 👍</p>";
+                echo "<h3>La información es :</h3>";
                 echo "<p class='info'>Autor : " . $autor . "</p>";
                 echo "<p class='info'>Email : " . $email . "</p>";
                 echo "<p class='info'>Telefono : " . $telefono . "</p>";
@@ -73,8 +73,8 @@
                 $resumen = "";
                 $url = "";
             } else {
-                echo "<p class='msg'>You shared Invalid details❌
-                    <br/>Please provide correct data!</p>";
+                echo "<p class='msg'>Hay información inválida ❌
+                    <br/>Por favor corrija los datos!</p>";
             }
         }
         ?>

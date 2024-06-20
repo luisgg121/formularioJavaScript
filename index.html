@@ -25,21 +25,80 @@
             <h2>Computación Cliente Servidor - Actividad 1</h2>
             <p>Nota.- Para acceder al formato y validación solicitados en la actividad 1, favor de dar clic en la liga
                 correspondiente a <a href="formato.php">Formato</a> en el menú principal</p>
-            <p>El objetivo de la actividad es realizar una página web utilizando PHP con un formulario que se debe validar.</p>
+            <p>El objetivo de la actividad es realizar una página web utilizando PHP con un formulario que se debe
+                validar.</p>
             <p>Los requisitos mínimos solicitados son los siguientes: </p>
             <p> - El formulario debe utilizar etiquetas HTML5.</p>
+            <p class="respuesta">Ver archivo formato.php</p>
             <p> - El formulario contendrá campos de por lo menos 5 tipos diferentes (por ejemplo, texto, fecha,
                 contraseña, etc.).</p>
+                <p class="respuesta">Se utilizaron campos de texto, email, teléfono, fecha y url</p>
             <p> - El formulario debe tener la funcionalidad necesaria para que existan al menos dos comprobaciones en
                 PHP, para que no sean posibles en HTML5. Por ejemplo, se pueden validar correos electrónicos,
                 direcciones de sitios web, formato del DNI español con su letra, etc.
+                <p class="respuesta">Todos los campos fueron validados (texto, email, teléfono, fecha y url)</p>
             </p>Cuando se entregue el formulario se deberá:</p>
             <p> • Si había algún campo erróneo, informar de los errores detectados y redirigir al usuario al formulario
                 para que lo pueda cumplimentar debidamente.</p>
+
             <p> • Si todos los campos eran correctos, generar un informe con las validaciones realizadas y mostrarlo por
                 pantalla.</p>
+                <img src="./recursos/informe.png"  >
             <p> - Al final del código se incluirá un comentario de no más de 200 palabras que explique el funcionamiento
                 del código implementado.</p>
+            <textarea rows="20" cols="150">
+Explicación del funcionamiento del código implementado para la validación (archivo validación.php):
+
+Inicialmente definimos e inicializamos las variables tanto para mostrar errores como para los datos del libro que recibimos para validación.
+
+Para mostrar errores de validación
+$autorErr = "";
+$emailErr = "";
+$telefonoErr = "";
+$libroErr = "";
+$fechaErr = "";
+$resumenErr = "";
+$urlErr = "";
+
+Para los datos del libro
+$autor = "";
+$email = "";
+$telefono = "";
+$libro = "";
+$fecha = "";
+$resumen = "";
+$url = "";
+
+Validación de los campos de entrada recibidos con el método POST
+Únicamente explicaré la validación de un campo, en este caso el nombre del autor, ya que todas las validaciones son similares
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validación del nombre del autor
+    // Primero validamos que el campo no sea vacío
+    if (empty($_POST["autor"])) {
+        $autorErr = "El nombre del autor es requerido";
+    } else {
+        $autor = input_data($_POST["autor"]);
+        // Checamos que el nombre del autor contenga únicamente letras del alfabeto, espacios, números y guiones bajos.
+        if (!preg_match("/^[a-zA-Z0-9_\sñáéíóúÁÉÍÓÚ]*$/", $autor)) {
+            $autorErr = "Únicamente letras del alfabeto, números y guión bajo son permitidos para el nombre del autor";
+        }
+    }
+
+...     
+}
+
+
+// Para manejar espacios en blanco y caracteres especiales en los datos utilizamos la siguiente función:
+function input_data($data)
+{
+    $data = trim($data); // para remover espacios al inicio de los datos
+    // Para evitar ataques Cross-Site Scripting (XSS) debemos convertir caracteres especiales en sus correspondientes entidades HTML, ejemplo - "&" -> "&amp"
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+            </textarea>
         </div>
     </div>
     <p class="contenedor">

@@ -88,15 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["resumen"])) {
         $resumenErr = "El resumen del libro es requerido";
     }
-
     // Permitimos cualquier caracter en el resumen
-    // else {
-    //     $resumen = input_data($_POST["resumen"]);
-    //     // To check that User Name only contains alphabets, numbers, and underscores 
-    //     if (!preg_match("/^[a-zA-ZÀ-ž0-9_\sñáéíóúÁÉÍÓÚ]*$/", $resumen)) {
-    //         $resumenErr = "Únicamente letras del alfabeto, números y guión bajo son permitidos para el nombre del libro";
-    //     }
-    // }
+    else {
+        $resumen = input_data($_POST["resumen"]);
+    }
+
 
     // Validando la URL    
     if (empty($_POST["url"])) {
