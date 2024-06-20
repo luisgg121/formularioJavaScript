@@ -38,7 +38,7 @@
                 <input type="date" id="fecha" name="fecha">
                 <div class="error"><?php echo $fechaErr; ?></div><br><br>
                 <label for="resumen" class="etiqueta">Resumen:</label><br>
-                <textarea id="resumen" name="resumen" rows="10" cols="100" maxlength="1000"></textarea><br>
+                <textarea id="resumen" name="resumen" rows="10" cols="100" maxlength="1000"></textarea>
                 <div class="error"><?php echo $resumenErr; ?></div><br><br>
                 <label for="url" class="etiqueta">Website del libro:</label><br>
                 <input type="url" name="url" maxlength="50" size="50">
