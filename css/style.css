@@ -120,6 +120,12 @@ audio {
     margin: 2px 0;
 }
 
+.requisito {
+    color: rgb(2, 19, 66);
+    margin: 10px 10px 10px 10px;
+    font-weight: bold;
+}
+
 .respuesta {
     color: rgb(12, 125, 4);
     margin: 10px 10px 10px 10px;
@@ -134,4 +140,10 @@ audio {
 
 #resumen {
     display: block;
+}
+
+.imagen {
+    margin-left: 50px;
+    width:700px;
+    border: 2px solid #333;
 }

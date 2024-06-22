@@ -23,28 +23,29 @@
             <h2>Alta de libros:</h2>
             <form method="post" class="container" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="autor" class="etiqueta">Nombre completo del autor:</label><br>
-                <input type="text" id="autor" name="autor" maxlength="50" size="50" value="<?php echo htmlspecialchars(""); ?>">
+                <input type="text" id="autor" name="autor" maxlength="50" size="50" value="<?php echo htmlspecialchars($autor); ?>">
                 <div class="error"><?php echo $autorErr; ?></div><br><br>
                 <label for="email" class="etiqueta">Email</label><br>
-                <input type="email" name="email" size="50">
+                <input type="email" name="email" size="50" value="<?php echo htmlspecialchars("$email"); ?>">
                 <div class="error"><?php echo $emailErr; ?></div><br><br>
                 <label for="telefono" class="etiqueta">Teléfono</label><br>
-                <input type="tel" name="telefono" size="50">
+                <input type="tel" name="telefono" size="50" value="<?php echo htmlspecialchars("$telefono"); ?>">
                 <div class="error"><?php echo $telefonoErr; ?></div><br><br>
                 <label for="libro" class="etiqueta">Nombre del libro:</label><br>
-                <input type="text" id="libro" name="libro" maxlength="50" size="50">
+                <input type="text" id="libro" name="libro" maxlength="50" size="50" value="<?php echo htmlspecialchars("$libro"); ?>">
                 <div class="error"><?php echo $libroErr; ?></div><br><br>
                 <label for="fecha" class="etiqueta">Fecha de publicación:</label><br>
-                <input type="date" id="fecha" name="fecha">
+                <input type="date" id="fecha" name="fecha" value="<?php echo htmlspecialchars("$fecha"); ?>">
                 <div class="error"><?php echo $fechaErr; ?></div><br><br>
                 <label for="resumen" class="etiqueta">Resumen:</label><br>
-                <textarea id="resumen" name="resumen" rows="10" cols="100" maxlength="1000"></textarea>
+                <textarea id="resumen" name="resumen" rows="10" cols="100" maxlength="1000" value="<?php echo htmlspecialchars($resumen); ?>"></textarea>
                 <div class="error"><?php echo $resumenErr; ?></div><br><br>
                 <label for="url" class="etiqueta">Website del libro:</label><br>
-                <input type="url" name="url" maxlength="50" size="50">
+                <input type="url" name="url" maxlength="50" size="50" value="<?php echo htmlspecialchars("$url"); ?>">
                 <div class="error"><?php echo $urlErr; ?></div><br><br>
                 <input type="submit" name="enviar" value="Enviar" class="btn"><br><br>
             </form>
+            <a href="formato.php" display="inline">Para volver a cargar la forma de clic aquí </a><p display="inline">o edite los datos para enviar.</p>
         </div>
     </div>
 
