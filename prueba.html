@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Saludo</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        document.write("<h1>¡Hola a todos!</h1>")
+    </script>
+
+    <script type="text/javascript">
+        var nombre = "Juan Manuel Cueva Lovelle"
+        document.write(nombre)
+        document.write("<h1>" + nombre + "</h1>")
+    </script>
+    <p>Este ejemplo define un objeto String y lo muestra</p>
+    <ol>
+        <li>Directamente</li>
+        <li>Como nivel h1</li>
+    </ol>
+
+    <script type="text/javascript">
+        var browser = navigator.appName
+        var versionCompleta = navigator.appVersion
+        var version = parseFloat(versionCompleta)
+        document.write("<p> Nombre del navegador: " + browser + "</p>");
+        document.write("<p> Versión del navegador: " + version + " o superior</p>");
+        document.write("Detalle del navegador: " + versionCompleta + "</p>");
+    </script>
+
+    <footer>
+        <a href="http://validator.w3.org/check/referer" hreflang="en-us">
+            <img src="valid-html5-button.png" alt="¡HTML5 válido!" height="31" width="88" />
+        </a>
+    </footer>
+
+</body>
+
+</html>
