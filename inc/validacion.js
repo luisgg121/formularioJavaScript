@@ -1,4 +1,4 @@
-// alert("Ya cargué validacion.js");
+// Comentario  alert("Ya cargué validacion.js");
 
 const btnEnviar = document.getElementById("btnEnviar");
 // alert(btnEnviar.value);
