@@ -50,56 +50,78 @@
                 del código implementado.</p>
             <textarea rows="20" cols="150">
 
-                Explicación del funcionamiento del código implementado para la validación (archivo validación.php):
+Explicación del funcionamiento del código implementado para la validación (archivo validación.js):
 
-Inicialmente definimos e inicializamos las variables tanto para mostrar errores como para los datos del libro que recibimos para validación.
 
-Para mostrar errores de validación
-$autorErr = "";
-$emailErr = "";
-$telefonoErr = "";
-$libroErr = "";
-$fechaErr = "";
-$resumenErr = "";
-$urlErr = "";
+En la siguiente línea de código definimos el elemento btnEnviar el cual nos servirá para escuchar el evento clic (ver última línea del código)
+  
+const btnEnviar = document.getElementById("btnEnviar");
 
-Para los datos del libro
-$autor = "";
-$email = "";
-$telefono = "";
-$libro = "";
-$fecha = "";
-$resumen = "";
-$url = "";
+A continuación, creamos una función flecha que nos servirá para validar el formulario:
 
-Validación de los campos de entrada recibidos con el método POST
-Únicamente explicaré la validación de un campo, en este caso el nombre del autor, ya que todas las validaciones son similares
+const validarFormulario = (e) => {
+    e.preventDefault();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validación del nombre del autor
-    // Primero validamos que el campo no sea vacío
-    if (empty($_POST["autor"])) {
-        $autorErr = "El nombre del autor es requerido";
-    } else {
-        $autor = input_data($_POST["autor"]);
-        // Checamos que el nombre del autor contenga únicamente letras del alfabeto, espacios, números y guiones bajos.
-        if (!preg_match("/^[a-zA-Z0-9_\sñáéíóúÁÉÍÓÚ]*$/", $autor)) {
-            $autorErr = "Únicamente letras del alfabeto, números y guión bajo son permitidos para el nombre del autor";
+    const miElemento = document.getElementById("reporte"); 
+
+Limpiamos el reporte de la validación.
+    miElemento.innerHTML = ""; 
+
+y leemos los datos cargados en el formulario:
+    var autor = document.forms["formulario"]["autor"].value;
+    var email = document.forms["formulario"]["email"].value;
+    ...
+
+    Vamos a validar con expresiones regulares, antes inicializamos la variable “error” a false, si encontramos algún error en la validación le asignamos true a dicha variable  
+    var error = false;
+    var expRegular = "";
+
+Ya que todas las validaciones son similares, solamente explicaremos la relativa al campo email.
+Primero se define la expresión regular:
+    expRegular = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+y validamos que email cumpla con dicha expresión:
+    if (expRegular.test(email))
+        document.getElementById('emailErr').textContent = "";
+en caso contrario presentamos un mensaje de error junto al valor del campo en el formulario.
+    else {
+        document.getElementById('emailErr').textContent = 'Por favor ingresa un email válido.';
+        error = true;
+    }
+
+Si todas las comprobaciones son correctas, se presenta el reporte de campos validados   
+    if (!error) {
+            param = document.createElement("h2");
+            node = document.createTextNode("Los datos se han validado exitosamente 👍");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+
+            param = document.createElement("p");
+            node = document.createTextNode("Autor: " + autor);
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+… y seguimos desplegandp todos los campos del formulario con sus valores.
+
+
+
+En el caso de que exista algún error, éste se despliega junto al campo en cuestión y adicionalmente se genera una nota al final del formulario:
+        } else {
+            param = document.createElement("h2");
+            node = document.createTextNode("Hay información inválida ❌");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+            
+            param = document.createElement("p");
+            node = document.createTextNode("Por favor corrija los datos!");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
         }
     }
 
-...     
-}
+Aquí escuchamos el clic soble el botón “btnEnviar:
+btnEnviar.addEventListener("click", validarFormulario);
+ */
 
 
-// Para manejar espacios en blanco y caracteres especiales en los datos utilizamos la siguiente función:
-function input_data($data)
-{
-    $data = trim($data); // para remover espacios al inicio de los datos
-    // Para evitar ataques Cross-Site Scripting (XSS) debemos convertir caracteres especiales en sus correspondientes entidades HTML, ejemplo - "&" -> "&amp"
-    $data = htmlspecialchars($data);
-    return $data;
-}
 
             </textarea>
         </div>
