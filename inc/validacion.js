@@ -148,4 +148,72 @@ const validarFormulario = (e) => {
 btnEnviar.addEventListener("click", validarFormulario);
 
 
+/* COMENTARIOS AL CÓDIGO DE VALIDACIÓN
 
+En la siguiente línea de código definimos el elemento btnEnviar el cual nos servirá para escuchar el evento clic (ver última línea del código)
+  
+const btnEnviar = document.getElementById("btnEnviar");
+
+A continuación, creamos una función flecha que nos servirá para validar el formulario:
+
+const validarFormulario = (e) => {
+    e.preventDefault();
+
+    const miElemento = document.getElementById("reporte"); 
+
+Limpiamos el reporte de la validación.
+    miElemento.innerHTML = ""; 
+
+y leemos los datos cargados en el formulario:
+    var autor = document.forms["formulario"]["autor"].value;
+    var email = document.forms["formulario"]["email"].value;
+    ...
+
+    Vamos a validar con expresiones regulares, antes inicializamos la variable “error” a false, si encontramos algún error en la validación le asignamos true a dicha variable  
+    var error = false;
+    var expRegular = "";
+
+Ya que todas las validaciones son similares, solamente explicaremos la relativa al campo email.
+Primero se define la expresión regular:
+    expRegular = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+y validamos que email cumpla con dicha expresión:
+    if (expRegular.test(email))
+        document.getElementById('emailErr').textContent = "";
+en caso contrario presentamos un mensaje de error junto al valor del campo en el formulario.
+    else {
+        document.getElementById('emailErr').textContent = 'Por favor ingresa un email válido.';
+        error = true;
+    }
+
+Si todas las comprobaciones son correctas, se presenta el reporte de campos validados   
+    if (!error) {
+            param = document.createElement("h2");
+            node = document.createTextNode("Los datos se han validado exitosamente 👍");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+
+            param = document.createElement("p");
+            node = document.createTextNode("Autor: " + autor);
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+… y seguimos desplegandp todos los campos del formulario con sus valores.
+
+
+
+En el caso de que exista algún error, éste se despliega junto al campo en cuestión y adicionalmente se genera una nota al final del formulario:
+        } else {
+            param = document.createElement("h2");
+            node = document.createTextNode("Hay información inválida ❌");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+            
+            param = document.createElement("p");
+            node = document.createTextNode("Por favor corrija los datos!");
+            param.appendChild(node);
+            document.getElementById('reporte').appendChild(param);
+        }
+    }
+
+Aquí escuchamos el clic soble el botón “btnEnviar:
+btnEnviar.addEventListener("click", validarFormulario);
+ */
